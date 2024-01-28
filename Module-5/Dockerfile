@@ -10,5 +10,8 @@ COPY . .
 
 EXPOSE 80
 
+# VOLUME ["/app/feedback"] -> supposed to be Named Volume
+# VOLUME ["/app/node_modules"] -> Anonymous Volume
+
 CMD ["node", "server.js"]
 
