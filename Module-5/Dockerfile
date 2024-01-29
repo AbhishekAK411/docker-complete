@@ -12,6 +12,7 @@ EXPOSE 80
 
 # VOLUME ["/app/feedback"] -> supposed to be Named Volume
 # VOLUME ["/app/node_modules"] -> Anonymous Volume
+# VOLUME ["/app/temp"] -> Anonymous Volume
 
 CMD ["npm", "start"]
 
