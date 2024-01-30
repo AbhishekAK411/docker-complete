@@ -67,8 +67,10 @@ app.get('/people', async (req, res) => {
   }
 });
 
+//* -> Docker communication container to container.
+
 mongoose.connect(
-  'mongodb://localhost:27017/swfavorites',
+  'mongodb://mongodb:27017/swfavorites',
   { useNewUrlParser: true },
   (err) => {
     if (err) {
@@ -78,3 +80,17 @@ mongoose.connect(
     }
   }
 );
+
+//* -> Docker communication with local host machine.
+
+// mongoose.connect(
+//   'mongodb://host.docker.internal:27017/swfavorites',
+//   { useNewUrlParser: true },
+//   (err) => {
+//     if (err) {
+//       console.log(err);
+//     } else {
+//       app.listen(3000);
+//     }
+//   }
+// );
