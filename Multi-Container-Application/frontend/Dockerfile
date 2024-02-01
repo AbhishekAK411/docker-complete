@@ -10,4 +10,6 @@ COPY . .
 
 EXPOSE 3000
 
+ENV CHOKIDAR_POLLING=true
+
 CMD ["npm", "start"]
