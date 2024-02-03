@@ -5,10 +5,33 @@ services:
     volumes:
       - data:/data/db
     environment:
-      # - MONGO_INITDB_ROOT_USERNAME: max
-      - MONGO_INITDB_ROOT_USERNAME=test
-      - MONGO_INITDB_ROOT_PASSWORD=secret
+      MONGO_INITDB_ROOT_USERNAME: test
+      MONGO_INITDB_ROOT_PASSWORD: secret
   backend:
-    
+    build: ./backend
+    ports:
+      - '80:80'
+    volumes:
+      - logs:/app/logs
+      - ./backend:/app
+      - /app/node_modules
+    environment:
+      MONGODB_USERNAME: test
+      MONGODB_PASSWORD: secret
+    depends_on:
+      - mongodb
   frontend:
-    
+    build: ./frontend
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./frontend/src:/app/src
+    stdin_open: true
+    tty: true
+    depends_on:
+      - backend
+
+
+volumes:
+  data:
+  logs:
